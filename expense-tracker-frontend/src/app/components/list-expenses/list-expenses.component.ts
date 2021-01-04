@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Expense } from 'src/app/models/expense';
+import { ExpenseService } from 'src/app/services/expense.service';
 
 @Component({
   selector: 'app-list-expenses',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListExpensesComponent implements OnInit {
 
-  constructor() { }
+  expenses: Expense[]=[];
+  constructor(private expenseService: ExpenseService) { }
 
   ngOnInit(): void {
+
+    this.expenseService.getExpenses().subscribe(
+     (data:any) => {this.expenses=data;
+      }
+    );
   }
 
 }
