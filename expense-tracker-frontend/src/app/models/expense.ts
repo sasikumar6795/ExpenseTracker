@@ -1,7 +1,7 @@
 export class Expense 
 {
     id: number;
-    expense: string;
+    expenseName: string;
     description: string;
     amount: number;
 }
