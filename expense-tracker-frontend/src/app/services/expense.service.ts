@@ -18,4 +18,8 @@ export class ExpenseService{
     return this.httpClient.get<Expense[]>(this.url);
   }
 
+  saveExpense(expense : Expense) : Observable<Expense> {
+    return this.httpClient.post<Expense>(this.url, expense);
+  }
+
   }
