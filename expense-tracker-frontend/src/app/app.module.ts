@@ -4,7 +4,13 @@ import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ListExpensesComponent } from './components/list-expenses/list-expenses.component';
 import { AddExpenseComponent } from './components/add-expense/add-expense.component';
+import { RouterModule, Routes } from '@angular/router';
 
+const routers: Routes =[
+  {path: 'expenses', component: ListExpensesComponent},
+  {path: 'addexpenses', component: AddExpenseComponent},
+  {path: '', redirectTo: '/expenses', pathMatch: 'full'}
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -12,7 +18,8 @@ import { AddExpenseComponent } from './components/add-expense/add-expense.compon
     AddExpenseComponent
   ],
   imports: [
-    BrowserModule,HttpClientModule
+    BrowserModule,HttpClientModule,
+    RouterModule.forRoot(routers)
   ],
   providers: [],
   bootstrap: [AppComponent]
