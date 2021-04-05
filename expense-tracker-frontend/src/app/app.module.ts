@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { ListExpensesComponent } from './components/list-expenses/list-expenses.component';
 import { AddExpenseComponent } from './components/add-expense/add-expense.component';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms'; 
 
 const routers: Routes =[
   {path: 'expenses', component: ListExpensesComponent},
@@ -19,6 +20,7 @@ const routers: Routes =[
   ],
   imports: [
     BrowserModule,HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(routers)
   ],
   providers: [],
