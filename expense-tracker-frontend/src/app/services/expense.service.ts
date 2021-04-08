@@ -32,9 +32,17 @@ export class ExpenseService {
   }
 
   saveExpense(expense: Expense): Observable<Expense> {
-    return this.httpClient.post<Expense>(this.url, expense)
-    .pipe(
-      catchError(this.handleError)
+    return this.httpClient
+      .post<Expense>(this.url, expense)
+      .pipe(catchError(this.handleError));
+  }
+
+  getExpense(id: number): Observable<Expense> {
+      return this.httpClient.get<Expense>(`${this.url}/${id}`).pipe(
+      map((response) => {
+        console.log("response getting from backend", response);
+        return response;
+      })
     );
   }
 }
