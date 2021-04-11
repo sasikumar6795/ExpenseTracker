@@ -37,4 +37,14 @@ export class AddExpenseComponent implements OnInit {
       this.router.navigateByUrl('/expenses');
     });
   }
+
+  deleteExpense(id : number)
+  {
+    this.expenseService.deleteExpense(id).subscribe(
+      (data) => {
+        console.log("deleted expense",data);
+        this.router.navigateByUrl('/expenses');
+      }
+    )
+  }
 }

@@ -45,4 +45,8 @@ export class ExpenseService {
       })
     );
   }
+
+  deleteExpense(id: number) : Observable<any> {
+    return this.httpClient.delete(`${this.url}/${id}`, {responseType: 'json'});
+  }
 }

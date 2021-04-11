@@ -21,4 +21,6 @@
   ></textarea>
 
   <button  type="submit">Add Expense</button>
+
+  <button *ngIf="expense.id"(click)="deleteExpense(expense.id)">DeleteExpense</button>
 </form>
