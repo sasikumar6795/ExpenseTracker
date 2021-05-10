@@ -11,7 +11,8 @@ export class ListExpensesComponent implements OnInit {
 
   expenses: Expense[]=[];
   filters = {
-    keyword : ''
+    keyword : '',
+    sortBy: 'Name'
   }
   constructor(private expenseService: ExpenseService) { }
 
@@ -32,8 +33,20 @@ export class ListExpensesComponent implements OnInit {
   filterExpenses(expenses: Expense[])
   {
     return expenses.filter((e)=>{
-      e.expenseName.toLowerCase().includes(this.filters.keyword.toLowerCase());
+      e.expenseName.toLowerCase().includes(this.filters.keyword.toLowerCase())
+    }).sort((a , b) => {
+      if(this.filters.sortBy==='Name')
+      {
+        return a.expenseName < b.expenseName ? -1:1;
+      }
+      else if(this.filters.sortBy==='Amount')
+      {
+        return a.amount > b.amount  ? -1:1;
+      }
     })
   }
+
+
+
 
 }
