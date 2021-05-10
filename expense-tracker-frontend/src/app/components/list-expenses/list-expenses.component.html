@@ -1,5 +1,9 @@
 <a [routerLink]="['/addexpenses']">addexpenses</a>
 
+<input type="text" [(ngModel)]="filters.keyword"
+name="keyword"
+(input)="listExpenses()">
+
 <div *ngFor="let expense of expenses">
 <h2>{{expense.expenseName}}</h2>
 <p>{{expense.id}}</p>

@@ -10,14 +10,30 @@ import { ExpenseService } from 'src/app/services/expense.service';
 export class ListExpensesComponent implements OnInit {
 
   expenses: Expense[]=[];
+  filters = {
+    keyword : ''
+  }
   constructor(private expenseService: ExpenseService) { }
 
   ngOnInit(): void {
 
+    this.listExpenses();
+  }
+
+  listExpenses()
+  {
     this.expenseService.getExpenses().subscribe(
-     (data:any) => {this.expenses=data;
+      (data) => {
+        this.expenses=this.filterExpenses(data);
       }
-    );
+    )
+  }
+
+  filterExpenses(expenses: Expense[])
+  {
+    return expenses.filter((e)=>{
+      e.expenseName.toLowerCase().includes(this.filters.keyword.toLowerCase());
+    })
   }
 
 }
